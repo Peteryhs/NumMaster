@@ -1,30 +1,39 @@
 #Ultimate Math caculator
 
 #Imports
+ # This code imports the math and cmath modules, which provide mathematical functions and operations.
 import math
 import cmath
 import time
 
 #Main Menu
 def main():
-    print("Welcome to the Ultimate Math Calculator!")
-    print("Please select a function")
-    print("1. Algebra")
-    print("2. Trigonometry")
-    print("3. Calculus")
-    print("4. Exit")
-    choice = input("Enter your choice: ")
+    """
+    This is the main function of the Ultimate Math Calculator. It presents the user with a menu of options
+    to choose from. The options include Algebra, Trigonometry, Calculus, and Exit. Depending on the user's
+    choice, it calls the appropriate function. If the user enters an invalid choice, it prints an error message
+    and calls itself again to present the menu to the user.
+    """
+    print("Welcome to the Ultimate Math Calculator!")  # Welcome message
+    print("Please select a function")  # Prompt for the user to select a function
+    print("1. Algebra")  # Option 1: Algebra
+    print("2. Trigonometry")  # Option 2: Trigonometry
+    print("3. Calculus")  # Option 3: Calculus
+    print("4. Exit")  # Option 4: Exit the program
+    choice = input("Enter your choice: ")  # Get the user's choice
+
+    # Depending on the user's choice, call the appropriate function
     if choice == "1":
-        algebra()
+        algebra()  # Call the algebra function if the user chose option 1
     elif choice == "2":
-        trig()
+        trig()  # Call the trigonometry function if the user chose option 2
     elif choice == "3":
-        calc()
+        calc()  # Call the calculus function if the user chose option 3
     elif choice == "4":
-        exit()
+        exit()  # Exit the program if the user chose option 4
     else:
-        print("Invalid choice")
-        main()
+        print("Invalid choice")  # Print an error message if the user entered an invalid choice
+        main()  # Call itself again to present the menu to the user
 #Algebra
 def algebra():
 
@@ -100,6 +109,37 @@ def algebra():
     else:
         print("Invalid choice")
 
+# Exponents and logarithms
+def expo():
+    base = int(input("Enter the base: "))
+    exponent = int(input("Enter the exponent: "))
+    print(f"{base}^{exponent} = {base**exponent}")
+def log():
+    base = int(input("Enter the base: "))
+    value = int(input("Enter the value: "))
+    rounding = int(input("Enter the number of decimal places to round to (press enter none): "))
+    if rounding == "":
+        print(f"log_{base}({value}) = {math.log(value, base)}")
+    else:
+        print(f"log_{base}({value}) = {round(math.log(value, base), rounding)}")
+
+#Factorials
+def factorial():
+    number = int(input("Enter a number: "))
+    print(f"{number}! = {math.factorial(number)}")
+
+#Permutations and combinations
+def perm():
+    n = int(input("Enter the number of items: "))
+    r = int(input("Enter the number of items to choose: "))
+    print(f"{n}P{r} = {math.perm(n, r)}")
+
+def comb():
+    n = int(input("Enter the number of items: "))
+    r = int(input("Enter the number of items to choose: "))
+    m = int(input("Enter the number of items that are duplicated: "))
+    print(f"{n}C{r} = {math.comb(n, r)}/{m}! = {math.comb(n, r) / math.factorial(m)}")
+
 
 #Trigonometry
 def trig():
@@ -156,5 +196,23 @@ def trig():
         value = float(input("Enter the value of the operation: "))
         degree1, degree2 = calculate_particular_solution(value, operation)
         print(f"The particular solutions for {operation}={value} are {degree1} degrees and {degree2} degrees")
+
+# Convertions
+def convert():
+    print("1. Degrees to radians")
+    print("2. Radians to degrees")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        degree = float(input("Enter the degree: "))
+        print(f"{degree} degrees = {math.radians(degree)} radians")
+    elif choice == "2":
+        radian = float(input("Enter the radian: "))
+        print(f"{radian} radians = {math.degrees(radian)} degrees")
+    else:
+        print("Invalid choice")
+
+def convert_per_to_frac():
+    percent = float(input("Enter the percentage: "))
+    print(f"{percent}% = {percent/100}")
 
 main()
